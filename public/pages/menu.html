@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/nav-bar.css" />
+    <link rel="stylesheet" href="../styles/menu.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>GoBoba</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="homepage.html" class="current">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="franchising.html">Franchising</a></li>
+                <li><a href="our-story.html">Our Story</a></li>
+            </ul>
+            <button id="log-out-btn">LOG OUT</button>
+        </div>
+    </nav>
+
+    <div id="main-container">
+        <h2>MENU</h2>
+        <div class="category-container">
+            <h3>Milk Tea</h3>
+            <div id="milk-tea-content"></div>
+        </div>
+        <div class="category-container">
+            <h3>Fruit Tea</h3>
+            <div id="fruit-tea-content"></div>
+        </div>
+        <div class="category-container">
+            <h3>Yakult</h3>
+            <div id="yakult-content"></div>
+        </div>
+        <div class="category-container">
+            <h3>Smoothie</h3>
+            <div id="smoothie-content"></div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Page -->
+    <a id="shopping-cart-btn" href="shopping-cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    <script src="../scripts/menu.js"></script>
+</body>
+
+</html>
