@@ -205,6 +205,13 @@ if (document.URL.includes("pages/shopping-cart.html")) {
     total.textContent += `$${roundedResult}`;
 }
 
+//Clear local storage if continue link is clicked, which also leads to the thank you page
+const thankYouLink = document.getElementById("thank-you-link");
+
+thankYouLink.addEventListener("click", () => {
+    localStorage.clear();
+})
+
 
 
 //ISSUE: cart item not saving after you update localstorage (by choosing new items)
