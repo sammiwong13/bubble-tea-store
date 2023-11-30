@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+:root {
+    --charcoal: #222021;
+    --abalone: #D6CFC7;
+    --beige: #FFE4C4;
+    --red: #8C1C1C;
+}
+
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #222;
+    padding-bottom: 50px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav {
+    position: fixed;
+    background-color: var(--charcoal);
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav.active {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav.active a {
+    color: #000;
+}
+
+.nav.active .container {
+    padding: 10px 0;
+}
+
+.nav a.current,
+.nav a:hover {
+    color: #c0392b;
+    font-weight: bold;
+} */
+
+.hero {
+    background-image: url(/public/images/hero.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    height: 100vh;
+    color: var(--beige);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    z-index: -2;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin: -20px 0 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* testimonial */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+    box-sizing: border-box;
+}
+
+.testimonial-container {
+    background-color: var(--charcoal);
+    color: var(--beige);
+    border-radius: 15px;
+    margin: 20px auto;
+    padding: 50px 80px;
+    max-width: 768px;
+    position: relative;
+    z-index: -1;
+}
+
+.fa-quote {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 28px;
+    position: absolute;
+    top: 70px;
+}
+
+.fa-quote-right {
+    left: 40px;
+}
+
+.fa-quote-left {
+    right: 40px;
+}
+
+.testimonial {
+    line-height: 28px;
+    text-align: justify;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user .user-image {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    object-fit: cover;
+}
+
+.user .user-details {
+    margin-left: 10px;
+}
+
+.user .username {
+    margin: 0;
+}
+
+.user .role {
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    background-color: var(--beige);
+    height: 4px;
+    width: 100%;
+    animation: grow 10s linear infinite;
+    transform-origin: left;
+}
+
+@keyframes grow {
+    0% {
+        transform: scaleX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-container {
+        padding: 20px 30px;
+    }
+
+    .fa-quote {
+        display: none;
+    }
+}
+
+/* Brad Traversy Scroll Animation */
+#scroll-animation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.box {
+    background-color: var(--charcoal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+    transform: translateX(400%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+.box:nth-of-type(even) {
+    transform: translateX(-400%);
+}
+
+.box.show {
+    transform: translateX(0);
+}
+
+.box h2 {
+    font-size: 45px;
+}
