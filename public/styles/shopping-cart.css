@@ -101,3 +101,10 @@ div>.card {
     font-size: 10px;
     font-weight: bolder;
 }
+
+#total {
+    color: var(--red);
+    font-family: 'Potta One', sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+}
