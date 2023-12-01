@@ -144,20 +144,17 @@ addToCartBtns.forEach((addToCartBtn, index) => {
         const selectedProduct = products[index];
         shoppingCartArray.push(selectedProduct);
         console.log("Added to cart:", selectedProduct);
-        // saveArray2(shoppingCartArray);
+        // saveArray(shoppingCartArray);
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    let shoppingCartBtn = document.getElementById("shopping-cart-btn");
-
-    if (shoppingCartBtn) {  //checks to see if shoppingCartBtn is not null or undefined
-        shoppingCartBtn.addEventListener("click", function () {
-            saveArray(shoppingCartArray);
-        });
-    }
-});
+//if shopping cart link is clicked, call the saveArray function
+let shoppingCartBtn = document.getElementById("shopping-cart-btn");
+if (shoppingCartBtn) {
+    shoppingCartBtn.addEventListener("click", () => {
+        saveArray(shoppingCartArray);
+    })
+}
 
 
 let storedItems = [];
@@ -165,13 +162,26 @@ let storedItems = [];
 // Retrieve the cart items from localStorage when the page loads
 storedItems = JSON.parse(localStorage.getItem("myCartItems")) || [];
 
-function saveArray(array) {
-    let storedItems;
+//Called when the remove button is clicked.
+function updateArray(array) {
+    const myJSON = JSON.stringify(array);
 
+    // Save cart items to localStorage
+    localStorage.setItem("myCartItems", myJSON);
+
+    // Update storedItems after saving
+    storedItems = array;
+
+    return storedItems;
+}
+
+//Called when the user adds new item to cart
+function saveArray(array) {
     if (localStorage.getItem("myCartItems")) {
         const oldValue = JSON.parse(localStorage.getItem("myCartItems"));
 
-        storedItems = oldValue.concat(array);
+        // storedItems = oldValue.concat(array);
+        storedItems = [...oldValue, ...array];
 
         // Combine two arrays of objects (old cart and new cart)
         localStorage.setItem("myCartItems", JSON.stringify(storedItems));
@@ -220,29 +230,63 @@ if (document.URL.includes("pages/shopping-cart.html")) {
     let roundedResult = result.toFixed(2);
     total.textContent = `Total: $${roundedResult}`;
 
+    //Get total cost of cart item by adding the storedItems price together
+    // let result = 0;
+    // for (let i = 0; i < storedItems.length; i++) {
+    //     result += storedItems[i].price;
+    //     result.toFixed(2);
+    // }
+    // let roundedResult = result.toFixed(2);
+    // total.textContent += `$${roundedResult}`;
+
     // Remove item from cart if remove button is clicked.
     // remove item from storedItems
     // update it in localStorage
+
+    //==================================================================================
+
+    // let removeBtns = document.querySelectorAll(".remove-btn");
+
+    // removeBtns.forEach((removeBtn, index) => {
+    //     removeBtn.addEventListener("click", () => {
+    //         console.log("clicked");
+    //         const removedProduct = storedItems[index];
+    //         delete storedItems[index];
+    //         console.log("Removed from cart:", removedProduct);
+    //         console.log(removeBtn.parentNode.parentNode.parentNode.parentNode);
+    //         let cardElement = removeBtn.parentNode.parentNode.parentNode.parentNode;
+    //         cardElement.remove();
+    //         saveArray2(storedItems);
+
+
+
+    //         result = totalCost(storedItems);
+    //         roundedResult = result.toFixed(2);
+    //         total.textContent = `Total: $${roundedResult}`;
+    //     });
+    // });
     let removeBtns = document.querySelectorAll(".remove-btn");
 
     removeBtns.forEach((removeBtn, index) => {
         removeBtn.addEventListener("click", () => {
             console.log("clicked");
             const removedProduct = storedItems[index];
-            delete storedItems[index];
+            storedItems.splice(index, 1); // Remove the item at the specified index
             console.log("Removed from cart:", removedProduct);
+
             console.log(removeBtn.parentNode.parentNode.parentNode.parentNode);
             let cardElement = removeBtn.parentNode.parentNode.parentNode.parentNode;
             cardElement.remove();
-            saveArray(storedItems);
-
-
+            updateArray(storedItems);
 
             result = totalCost(storedItems);
             roundedResult = result.toFixed(2);
             total.textContent = `Total: $${roundedResult}`;
         });
     });
+
+    //==================================================================================
+
 
     //Clear local storage if continue link is clicked, which also leads to the thank you page
     const thankYouLink = document.getElementById("thank-you-link");
@@ -270,4 +314,3 @@ if (document.URL.includes("pages/shopping-cart.html")) {
 
 
 //ISSUE: cart item not saving after you update localstorage (by choosing new items)
-
