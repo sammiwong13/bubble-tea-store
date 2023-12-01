@@ -144,9 +144,21 @@ addToCartBtns.forEach((addToCartBtn, index) => {
         const selectedProduct = products[index];
         shoppingCartArray.push(selectedProduct);
         console.log("Added to cart:", selectedProduct);
-        saveArray(shoppingCartArray);
+        // saveArray2(shoppingCartArray);
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    let shoppingCartBtn = document.getElementById("shopping-cart-btn");
+
+    if (shoppingCartBtn) {  //checks to see if shoppingCartBtn is not null or undefined
+        shoppingCartBtn.addEventListener("click", function () {
+            saveArray(shoppingCartArray);
+        });
+    }
+});
+
 
 let storedItems = [];
 
@@ -154,15 +166,25 @@ let storedItems = [];
 storedItems = JSON.parse(localStorage.getItem("myCartItems")) || [];
 
 function saveArray(array) {
-    const myJSON = JSON.stringify(array);
-    // Save cart items to localStorage
-    localStorage.setItem("myCartItems", myJSON);
+    let storedItems;
 
-    // Update storedItems after saving
-    storedItems = array;
+    if (localStorage.getItem("myCartItems")) {
+        const oldValue = JSON.parse(localStorage.getItem("myCartItems"));
+
+        storedItems = oldValue.concat(array);
+
+        // Combine two arrays of objects (old cart and new cart)
+        localStorage.setItem("myCartItems", JSON.stringify(storedItems));
+
+    } else {
+        // There is no value stored in local storage
+        localStorage.setItem("myCartItems", JSON.stringify(array));
+        storedItems = array; // Set it to the new array if there was no existing data
+    }
 
     return storedItems;
 }
+
 
 // Retrieve the cart items from localStorage when the page loads
 let updatedCart = JSON.parse(localStorage.getItem("myCartItems"));
@@ -197,15 +219,6 @@ if (document.URL.includes("pages/shopping-cart.html")) {
     let result = totalCost(storedItems);
     let roundedResult = result.toFixed(2);
     total.textContent = `Total: $${roundedResult}`;
-
-    //Get total cost of cart item by adding the storedItems price together
-    // let result = 0;
-    // for (let i = 0; i < storedItems.length; i++) {
-    //     result += storedItems[i].price;
-    //     result.toFixed(2);
-    // }
-    // let roundedResult = result.toFixed(2);
-    // total.textContent += `$${roundedResult}`;
 
     // Remove item from cart if remove button is clicked.
     // remove item from storedItems
