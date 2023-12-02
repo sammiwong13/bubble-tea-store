@@ -1,0 +1,73 @@
+:root {
+    --charcoal: #222021;
+    --abalone: #D6CFC7;
+    --beige: #FFE4C4;
+    --red: #8C1C1C;
+}
+
+#main-container {
+    position: absolute;
+    top: 15%;
+    left: 1%;
+    color: var(--red);
+    font-family: "Open Sans", "Sans Serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: -1;
+    gap: 20px;
+    width: 98%;
+}
+
+#main-container>h2 {
+    font-size: 80px;
+}
+
+.image-container {
+    background-color: var(--charcoal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transition: opacity 2s ease;
+    opacity: 0;
+    /* Start with opacity 0 */
+}
+
+.image-container.active {
+    opacity: 1;
+    /* Set opacity to 1 when active */
+}
+
+#image-scroll-container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--charcoal);
+    padding: 20px;
+}
+
+#information-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+table {
+    background-color: var(--charcoal);
+}
+
+th,
+tr {
+    background-color: var(--abalone);
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--beige);
+}
+
+#table-title {
+    background-color: var(--charcoal);
+}

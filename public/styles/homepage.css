@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :root {
     --charcoal: #222021;
@@ -110,9 +111,6 @@ body {
     font-size: 20px;
     letter-spacing: 1px;
 }
-
-/* testimonial */
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 * {
     box-sizing: border-box;
