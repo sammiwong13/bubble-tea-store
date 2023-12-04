@@ -110,3 +110,13 @@ function checkBoxes() {
         }
     })
 }
+
+//This is for async/await
+async function myDisplay() {
+    let myPromise = new Promise(function (resolve) {
+        setTimeout(function () { resolve("Best bubble tea store established in New York City since 1970"); }, 3000);
+    });
+    document.getElementById("title-info").innerHTML = await myPromise;
+}
+
+myDisplay();

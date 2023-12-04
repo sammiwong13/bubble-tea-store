@@ -16,7 +16,6 @@ app.listen(3000, function () {
     console.log("listening to port 3000...");
 });
 
-
 ///////
 const mysql = require("mysql");
 
@@ -40,7 +39,6 @@ conn.connect(function (err) {
 //     resave: true,
 //     saveUninitialized: true
 // }));
-
 
 // node server.js in console
 // http://localhost:3000 in browser
