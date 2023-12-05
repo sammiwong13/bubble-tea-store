@@ -48,10 +48,11 @@ body {
     color: var(--red);
 }
 
-.btn {
+#register-btn,
+#login-btn {
     cursor: pointer;
     display: inline-block;
-    width: 100%;
+    width: 50%;
     background: var(--red);
     padding: 15px;
     font-family: inherit;

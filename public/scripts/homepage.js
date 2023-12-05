@@ -1,5 +1,6 @@
 //Navigation Bar from Brad Traversy Videeo
 const nav = document.querySelector('.nav')
+const logOutBtn = document.getElementById("log-out-btn");
 window.addEventListener('scroll', fixNav)
 
 function fixNav() {
@@ -9,6 +10,12 @@ function fixNav() {
         nav.classList.remove('active')
     }
 }
+
+//log out button
+logOutBtn.addEventListener("click", () => {
+    window.location.href = "../index.html";
+    localStorage.clear();
+})
 
 //Testimonial from Brad Traversy
 const testimonialsContainer = document.querySelector('.testimonials-container')

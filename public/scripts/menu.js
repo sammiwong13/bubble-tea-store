@@ -103,6 +103,15 @@ const milkTeaContent = document.getElementById("milk-tea-content");
 const fruitTeaContent = document.getElementById("fruit-tea-content");
 const yakultContent = document.getElementById("yakult-content");
 const smoothieContent = document.getElementById("smoothie-content");
+const logOutBtn = document.getElementById("log-out-btn");
+
+if (document.URL.includes("pages/menu.html")) {
+    //log out button
+    logOutBtn.addEventListener("click", () => {
+        window.location.href = "../index.html";
+        localStorage.clear();
+    })
+}
 
 for (let i = 0; i < products.length; i++) {
 

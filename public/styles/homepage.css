@@ -9,7 +9,7 @@
 }
 
 .hero {
-    background-image: url(/public/images/hero.webp);
+    background-image: url("../images/hero.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
