@@ -1,44 +1,52 @@
-const express = require("express");
+const http = require("http");
+const fs = require("fs");
 const path = require("path");
-const app = express();
 
-//serve static files from the public directory
-app.use(express.static("public"));
+const server = http.createServer((req, res) => {
+    //serve static files from the public directory
+    //req.url using the ternary operator. If root directory, then index.html else the req.url
+    const filePath = path.join(__dirname, "public", req.url === "/" ? "index.html" : req.url);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', async (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("Not Found");
+        } else {
+            res.writeHead(200, { "Content-Type": getContentType(filePath) });
+            res.end(data);
+        }
+    });
 });
 
-//start the web server
-app.listen(3000, function () {
-    console.log("listening to port 3000...");
-});
-
-///////
-const mysql = require("mysql");
-
-const conn = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "bubble-tea-store-database"
-});
-
-conn.connect(function (err) {
-    if (err) {
-        console.log("Error connecting to MySQL: ", err);
-    } else {
-        console.log("Connection established");
+//This getContentType function is used to determine the content type of a file based on its extension. 
+//It takes filePath as an argument which is the path of the file 
+//path.extname(filePath) will extract the filepath from the argument
+const getContentType = (filePath) => {
+    const extname = path.extname(filePath);
+    switch (extname) {
+        case ".html":
+            return "text/html";
+        case ".css":
+            return "text/css";
+        case ".js":
+            return "text/javascript";
+        case ".png":
+            return "image/png";
+        case ".jpg":
+            return "image/jpg";
+        default:
+            return "application/octet-stream";
     }
+};
+
+const PORT = 3000;
+
+//Listen on port 3000
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
-// app.use(session({
-//     secret: 'webslesson',
-//     resave: true,
-//     saveUninitialized: true
-// }));
-
-// node server.js in console
-// http://localhost:3000 in browser
+//======================================================================================//
+//To run the website, create a server connection
+//1. node server.js in console
+//2. http://localhost:3000 in browser

@@ -17,8 +17,6 @@
 
     <div id="right-content">
         <h1>Login</h1>
-        <!-- <form action="index.html" method="POST"> -->
-        <!-- <form> -->
         <div class="form-control">
             <input type="text" id="name" required>
             <label>Name</label>
@@ -36,11 +34,10 @@
         <button id="login-btn">Login</button>
 
         <p class="text">Don't have an account? <a href="pages/register.html">Register</a> </p>
-        <!-- </form> -->
     </div>
 </body>
 <script src="scripts/login.js"></script>
-<script src="../server2.js"></script>
+<script src="../server.js"></script>
 
 
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
@@ -70,7 +67,7 @@
     const analytics = getAnalytics(app);
 
     //getDatabase - method for getting database
-    //setDatabase - 
+    //setDatabase - method for setting values in database
     import { getDatabase, set, get, update, remove, ref, child }
         from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"
 
@@ -80,6 +77,8 @@
     var password = document.querySelector("#password");
     var loginBtn = document.querySelector("#login-btn");
 
+    //the findData function is used to find if a person is found in the databsae. If their information exists within the database,
+    //go to homepage.html. Else, give a popup alert stating "no data found". Otherwise, give a popup with an error message. 
     function findData() {
         const dbref = ref(db);
         get(child(dbref, "People/" + name.value))
@@ -95,11 +94,7 @@
                 alert(error)
             })
     }
-
     loginBtn.addEventListener("click", findData);
 </script>
-
-
-
 
 </html>
