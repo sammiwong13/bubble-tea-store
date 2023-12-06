@@ -239,41 +239,6 @@ if (document.URL.includes("pages/shopping-cart.html")) {
     let roundedResult = result.toFixed(2);
     total.textContent = `Total: $${roundedResult}`;
 
-    //Get total cost of cart item by adding the storedItems price together
-    // let result = 0;
-    // for (let i = 0; i < storedItems.length; i++) {
-    //     result += storedItems[i].price;
-    //     result.toFixed(2);
-    // }
-    // let roundedResult = result.toFixed(2);
-    // total.textContent += `$${roundedResult}`;
-
-    // Remove item from cart if remove button is clicked.
-    // remove item from storedItems
-    // update it in localStorage
-
-    //==================================================================================
-
-    // let removeBtns = document.querySelectorAll(".remove-btn");
-
-    // removeBtns.forEach((removeBtn, index) => {
-    //     removeBtn.addEventListener("click", () => {
-    //         console.log("clicked");
-    //         const removedProduct = storedItems[index];
-    //         delete storedItems[index];
-    //         console.log("Removed from cart:", removedProduct);
-    //         console.log(removeBtn.parentNode.parentNode.parentNode.parentNode);
-    //         let cardElement = removeBtn.parentNode.parentNode.parentNode.parentNode;
-    //         cardElement.remove();
-    //         saveArray2(storedItems);
-
-
-
-    //         result = totalCost(storedItems);
-    //         roundedResult = result.toFixed(2);
-    //         total.textContent = `Total: $${roundedResult}`;
-    //     });
-    // });
     let removeBtns = document.querySelectorAll(".remove-btn");
 
     removeBtns.forEach((removeBtn, index) => {
@@ -294,9 +259,6 @@ if (document.URL.includes("pages/shopping-cart.html")) {
         });
     });
 
-    //==================================================================================
-
-
     //Clear local storage if continue link is clicked, which also leads to the thank you page
     const thankYouLink = document.getElementById("thank-you-link");
 
@@ -316,10 +278,3 @@ if (document.URL.includes("pages/shopping-cart.html")) {
         return result;
     }
 }
-
-
-
-
-
-
-//ISSUE: cart item not saving after you update localstorage (by choosing new items)
