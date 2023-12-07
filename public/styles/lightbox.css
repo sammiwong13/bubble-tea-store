@@ -1,0 +1,28 @@
+:root {
+    --charcoal: #222021;
+    --abalone: #D6CFC7;
+    --beige: #FFE4C4;
+    --red: #8C1C1C;
+}
+
+#lightbox {
+    background-color: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.lightbox-image {
+    display: flex;
+    flex-direction: row;
+}
+
+#lightbox-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#lightbox-play {}
